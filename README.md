@@ -65,6 +65,8 @@ Hásteinsvöllur, Þórsvöllur, Týsvöllur, Herjólfshöll. All within **2–5
 
 ## 3. Roster: teams and drivers
 
+**Scraper:** `scrape_drivers.py` fetches the live roster and per-day shift signups (plus Herjólfur ferry drivers and gisting) from the shared "Bílstjóravaktir og nestisnefnd" Google Sheet — `python3 scrape_drivers.py --json`. Rerun it before generating each day's plan; the table below is a snapshot.
+
 |Lið|Drivers (name · phone)                                      |
 |---|------------------------------------------------------------|
 |1  |Hilmar · 898 9249 — Ágúst · 696 7931 — Valur · 663 4411     |
