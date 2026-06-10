@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bílaplan Þróttar · TM Mótið · Fimmtudagur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C8102E;
+    --red-dark:#9B0C23;
+    --blue:#1D4E89;
+    --blue-dark:#15395F;
+    --ink:#211A1D;
+    --paper:#FBF8F5;
+    --card:#FFFFFF;
+    --line:#E8DFDA;
+    --muted:#7A6E72;
+    --green:#2E6B4F;
+    --lid1:#F6C9CF; --lid2:#D96A5B; --lid3:#E89AA4; --lid4:#C8102E; --lid5:#F2B8C0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Barlow',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.45;
+    padding-bottom:70px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px}
+
+  /* ── Header ─────────────────────────── */
+  header{
+    background:var(--ink);color:#fff;
+    padding:22px 0 18px;
+  }
+  header .eyebrow{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:600;font-size:14px;letter-spacing:.18em;
+    text-transform:uppercase;opacity:.75;
+  }
+  header h1{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:clamp(30px,6vw,44px);
+    line-height:1.05;text-transform:uppercase;
+  }
+
+  /* ── Car picker (sticky) ────────────── */
+  .picker{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);
+    padding:10px 0 12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.25);
+  }
+  .picker .wrap{display:flex;gap:8px}
+  .pbtn{
+    flex:1;border:2px solid rgba(255,255,255,.35);background:transparent;
+    color:#fff;border-radius:8px;padding:10px 4px;cursor:pointer;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:19px;text-transform:uppercase;letter-spacing:.05em;
+    transition:all .12s;
+  }
+  .pbtn small{display:block;font-family:'Barlow',sans-serif;font-weight:500;
+    font-size:11.5px;text-transform:none;letter-spacing:0;opacity:.8}
+  .pbtn.car1.active{background:var(--red);border-color:var(--red)}
+  .pbtn.car2.active{background:var(--blue);border-color:var(--blue)}
+  .pbtn.all.active{background:#fff;border-color:#fff;color:var(--ink)}
+
+  /* ── Mode banner ────────────────────── */
+  .mode-note{
+    text-align:center;font-size:13.5px;color:var(--muted);
+    margin:12px 0 0;
+  }
+
+  /* ── Shift blocks ───────────────────── */
+  h2{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:24px;text-transform:uppercase;
+    letter-spacing:.03em;margin:30px 0 2px;
+  }
+  .h2sub{color:var(--muted);font-size:13.5px;margin-bottom:10px}
+
+  .driverbar{
+    display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;
+  }
+  .dcard{
+    flex:1;min-width:200px;border-radius:8px;padding:9px 12px;color:#fff;font-size:14px;
+  }
+  .dcard.c1{background:var(--red)}
+  .dcard.c2{background:var(--blue)}
+  .dcard b{font-size:15.5px}
+  .dcard a{color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}
+  .dcard .role{
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    text-transform:uppercase;letter-spacing:.08em;font-size:13px;
+    opacity:.85;display:block;
+  }
+  .vara{font-size:13px;color:var(--muted);margin:-4px 0 10px}
+  .vara a{color:var(--ink);font-weight:600}
+
+  /* ── Trip cards ─────────────────────── */
+  .trip{
+    display:flex;gap:0;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;
+    margin-bottom:8px;overflow:hidden;
+  }
+  .trip .stripe{width:7px;flex-shrink:0}
+  .trip.c1 .stripe{background:var(--red)}
+  .trip.c2 .stripe{background:var(--blue)}
+  .trip.both .stripe{background:linear-gradient(180deg,var(--red) 50%,var(--blue) 50%)}
+  .trip .inner{flex:1;padding:10px 12px;display:flex;gap:12px;align-items:flex-start}
+  .trip .when{
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:24px;line-height:1;min-width:62px;
+    font-variant-numeric:tabular-nums;padding-top:2px;
+  }
+  .trip.c1 .when{color:var(--red-dark)}
+  .trip.c2 .when{color:var(--blue-dark)}
+  .trip .what{flex:1}
+  .trip .route{
+    font-size:16px;font-weight:700;line-height:1.3;
+  }
+  .trip .route .arr{color:var(--muted);font-weight:400;padding:0 3px}
+  .trip .who{margin-top:3px;font-size:14px}
+  .trip .why{
+    font-size:12.5px;color:var(--muted);margin-top:3px;
+  }
+  .trip .carlabel{
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    padding:3px 8px;border-radius:4px;color:#fff;align-self:flex-start;
+    white-space:nowrap;
+  }
+  .trip.c1 .carlabel{background:var(--red)}
+  .trip.c2 .carlabel{background:var(--blue)}
+  .trip.both .carlabel{background:var(--ink)}
+
+  /* game markers */
+  .gamerow{
+    display:flex;align-items:center;gap:10px;
+    margin:4px 0 10px;padding:0 4px;
+    color:var(--green);font-size:13px;font-weight:600;
+  }
+  .gamerow::before,.gamerow::after{content:"";flex:1;height:1px;background:#BFD4C9}
+
+  /* team chips */
+  .chip{
+    display:inline-block;font-weight:700;font-size:13px;
+    padding:1px 8px;border-radius:3px;white-space:nowrap;
+    border:1px solid rgba(0,0,0,.12);
+  }
+  .l1{background:var(--lid1)} .l2{background:var(--lid2);color:#fff}
+  .l3{background:var(--lid3)} .l4{background:var(--lid4);color:#fff}
+  .l5{background:var(--lid5)}
+
+  /* filtering */
+  body.show-c1 .trip.c2{display:none}
+  body.show-c2 .trip.c1{display:none}
+  body.show-c1 .dcard.c2,
+  body.show-c2 .dcard.c1{opacity:.35}
+  body.show-c1 .gamerow,body.show-c2 .gamerow{display:none}
+
+  /* ── Overview + notes ───────────────── */
+  details.overview{
+    background:var(--card);border:1px solid var(--line);border-radius:8px;
+    margin-top:14px;
+  }
+  details.overview summary{
+    cursor:pointer;padding:10px 14px;font-weight:700;
+    font-family:'Barlow Condensed',sans-serif;font-size:17px;
+    text-transform:uppercase;letter-spacing:.04em;
+  }
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{
+    font-family:'Barlow Condensed',sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.07em;font-size:12.5px;
+    background:var(--ink);color:#fff;padding:7px 9px;text-align:left;
+  }
+  tbody td{padding:7px 9px;border-top:1px solid var(--line);vertical-align:top}
+  .num{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+
+  .notes{font-size:14px;margin-top:10px}
+  .notes li{margin:7px 0 7px 18px}
+  .warn{
+    background:#FFF3E8;border:1px solid #EBC9A8;border-radius:6px;
+    padding:10px 14px;font-size:13.5px;margin-top:12px;
+  }
+  footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
+  @media print{
+    .picker{position:static}
+    body.show-c1 .trip.c2,body.show-c2 .trip.c1{display:flex}
+  }
+</style>
+</head>
+<body class="show-all">
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">TM Mótið í Eyjum · Þróttur R.</div>
+    <h1>Bílaplan – Fimmtudagur</h1>
+  </div>
+</header>
+
+<div class="picker">
+  <div class="wrap">
+    <button class="pbtn car1" data-mode="c1">Bíll 1<small>Rauðu ferðirnar</small></button>
+    <button class="pbtn car2" data-mode="c2">Bíll 2<small>Bláu ferðirnar</small></button>
+    <button class="pbtn all active" data-mode="all">Allt<small>Báðir bílar</small></button>
+  </div>
+</div>
+
+<div class="wrap">
+  <p class="mode-note" id="modeNote">Veldu þinn bíl hér að ofan til að sjá bara þínar ferðir.</p>
+
+  <!-- ════════════ MORGUNVAKT ════════════ -->
+  <h2>Morgunvakt</h2>
+  <p class="h2sub">06:40–12:00 · Lið 1, 2 og 4 spila þrjá leiki · lið 3 og 5 fara í morgunmat</p>
+  <div class="driverbar">
+    <div class="dcard c1"><span class="role">Bíll 1</span><b>Hilmar</b> (lið 1) · <a href="tel:8989249">898 9249</a></div>
+    <div class="dcard c2"><span class="role">Bíll 2</span><b>Andri</b> (lið 2) · <a href="tel:6661313">666 1313</a></div>
+  </div>
+  <p class="vara">Til vara: Ágúst · <a href="tel:6967931">696 7931</a> (er skráður á bæði lið 1 og 2)</p>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">06:45</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
+      <div class="who"><span class="chip l1">Lið 1</span></div>
+      <div class="why">Matur kl. 7:00 — taktu líka lið 4 í ferð nr. 2 strax á eftir.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">06:45</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
+      <div class="who"><span class="chip l2">Lið 2</span></div>
+      <div class="why">Matur kl. 7:00.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">06:55</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
+      <div class="who"><span class="chip l4">Lið 4</span></div>
+      <div class="why">Ferð nr. 2 — beint eftir lið 1.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">07:45</div>
+    <div class="what">
+      <div class="route">Morgunmatur <span class="arr">→</span> Hásteinsvöllur 2</div>
+      <div class="who"><span class="chip l1">Lið 1</span></div>
+      <div class="why">Leikur kl. 8:20 — farðu strax til baka að sækja lið 4.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">07:45</div>
+    <div class="what">
+      <div class="route">Morgunmatur <span class="arr">→</span> Þórsvöllur 1</div>
+      <div class="who"><span class="chip l2">Lið 2</span></div>
+      <div class="why">Leikur kl. 8:20.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">07:55</div>
+    <div class="what">
+      <div class="route">Morgunmatur <span class="arr">→</span> Týsvöllur 4</div>
+      <div class="who"><span class="chip l4">Lið 4</span></div>
+      <div class="why">Leikur kl. 8:20 — naumasti tíminn í planinu, ekki tefja.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">07:55</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Matur kl. 8:00.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 08:20 — Leikur 1 hefst hjá liðum 1, 2 og 4</div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">08:25</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Matur kl. 8:30.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">08:40</div>
+    <div class="what">
+      <div class="route">Morgunmatur <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Frjáls tími fram að hádegismat kl. 11:30.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">08:55</div>
+    <div class="what">
+      <div class="route">Morgunmatur <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Frjáls tími fram að hádegismat kl. 12:00.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">09:10</div>
+    <div class="what">
+      <div class="route">Hásteinsvöllur <span class="arr">→</span> Þórsvöllur 2</div>
+      <div class="who"><span class="chip l1">Lið 1</span></div>
+      <div class="why">Leikur 2 kl. 9:40 — sæktu svo lið 4 á Týsvöll.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">09:10</div>
+    <div class="what">
+      <div class="route">Þórsvöllur <span class="arr">→</span> Hásteinsvöllur 1</div>
+      <div class="who"><span class="chip l2">Lið 2</span></div>
+      <div class="why">Leikur 2 kl. 9:40.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">09:20</div>
+    <div class="what">
+      <div class="route">Týsvöllur <span class="arr">→</span> Herjólfshöll 1</div>
+      <div class="who"><span class="chip l4">Lið 4</span></div>
+      <div class="why">Leikur 2 kl. 9:40.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 09:40 — Leikur 2 hefst hjá liðum 1, 2 og 4</div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">10:30</div>
+    <div class="what">
+      <div class="route">Þórsvöllur <span class="arr">→</span> Týsvöllur 1</div>
+      <div class="who"><span class="chip l1">Lið 1</span></div>
+      <div class="why">Leikur 3 kl. 11:00 — sæktu svo lið 4 í Herjólfshöll.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">10:30</div>
+    <div class="what">
+      <div class="route">Hásteinsvöllur <span class="arr">→</span> Týsvöllur 3</div>
+      <div class="who"><span class="chip l2">Lið 2</span></div>
+      <div class="why">Leikur 3 kl. 11:00.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">10:40</div>
+    <div class="what">
+      <div class="route">Herjólfshöll <span class="arr">→</span> Hásteinsvöllur 4</div>
+      <div class="who"><span class="chip l4">Lið 4</span></div>
+      <div class="why">Leikur 3 kl. 11:00.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 11:00 — Leikur 3 hefst hjá liðum 1, 2 og 4</div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">11:25</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Hádegismatur</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Matur kl. 11:30.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">11:40</div>
+    <div class="what">
+      <div class="route">Týsvöllur <span class="arr">→</span> Hádegismatur</div>
+      <div class="who"><span class="chip l1">Lið 1</span> <span class="chip l2">Lið 2</span></div>
+      <div class="why">Bæði lið eru á Týsvelli — matur kl. 12:30, tvær ferðir ef þarf.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">11:50</div>
+    <div class="what">
+      <div class="route">Hásteinsvöllur <span class="arr">→</span> Hádegismatur</div>
+      <div class="who"><span class="chip l4">Lið 4</span></div>
+      <div class="why">Matur kl. 12:30.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <!-- ════════════ MIÐVAKT ════════════ -->
+  <h2>Miðvakt</h2>
+  <p class="h2sub">11:15–15:30 · Lið 3 og 5 byrja að spila · lið 1, 2 og 4 fara heim úr mat</p>
+  <div class="driverbar">
+    <div class="dcard c1"><span class="role">Bíll 1</span><b>Kristján</b> (lið 3) · <a href="tel:6980088">698 0088</a></div>
+    <div class="dcard c2"><span class="role">Bíll 2</span><b>Sæmi</b> (lið 4) · <a href="tel:6959582">695 9582</a></div>
+  </div>
+  <p class="vara">Til vara: Leví · <a href="tel:8393667">839 3667</a></p>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">11:50</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Hádegismatur</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Matur kl. 12:00.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">12:25</div>
+    <div class="what">
+      <div class="route">Hádegismatur <span class="arr">→</span> Týsvöllur 4</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Fyrsti leikur liðs 3 kl. 13:00.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 13:00 — Leikur 1 hefst hjá liði 3</div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">13:00</div>
+    <div class="what">
+      <div class="route">Hádegismatur <span class="arr">→</span> Týsvöllur 4</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Fyrsti leikur liðs 5 kl. 13:40.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip both"><div class="stripe"></div><div class="inner">
+    <div class="when">13:15</div>
+    <div class="what">
+      <div class="route">Hádegismatur <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l1">Lið 1</span> <span class="chip l2">Lið 2</span> <span class="chip l4">Lið 4</span></div>
+      <div class="why">Tvær ferðir á hvorn bíl — frjáls tími fram að kvöldmat kl. 16:30.</div>
+    </div><span class="carlabel">Báðir bílar</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 13:40 — Leikur 1 hefst hjá liði 5</div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">13:55</div>
+    <div class="what">
+      <div class="route">Týsvöllur <span class="arr">→</span> Þórsvöllur 3</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Leikur 2 kl. 14:20.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 14:20 — Leikur 2 hefst hjá liði 3</div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">14:35</div>
+    <div class="what">
+      <div class="route">Týsvöllur <span class="arr">→</span> Þórsvöllur 3</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Leikur 2 kl. 15:00.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 15:00 — Leikur 2 hefst hjá liði 5</div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">15:15</div>
+    <div class="what">
+      <div class="route">Þórsvöllur <span class="arr">→</span> Hásteinsvöllur 4</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Síðasti leikur liðs 3 kl. 15:40.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <!-- ════════════ KVÖLDVAKT ════════════ -->
+  <h2>Kvöldvakt</h2>
+  <p class="h2sub">15:15–18:45 · Síðustu leikir liða 3 og 5 · kvöldmatur fyrir alla</p>
+  <div class="driverbar">
+    <div class="dcard c1"><span class="role">Bíll 1</span><b>Bjarki</b> (lið 5) · <a href="tel:6975490">697 5490</a></div>
+    <div class="dcard c2"><span class="role">Bíll 2</span><b>Sif</b> (lið 4) · <a href="tel:8884628">888 4628</a></div>
+  </div>
+  <p class="vara">Til vara: Valtýr · <a href="tel:6255195">625 5195</a></p>
+
+  <div class="gamerow">⚽ 15:40 — Leikur 3 hefst hjá liði 3</div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">15:55</div>
+    <div class="what">
+      <div class="route">Þórsvöllur <span class="arr">→</span> Herjólfshöll 2</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Síðasti leikur liðs 5 kl. 16:20.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">16:15</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Kvöldmatur</div>
+      <div class="who"><span class="chip l1">Lið 1</span> <span class="chip l2">Lið 2</span></div>
+      <div class="why">Matur kl. 16:30 — tvær ferðir ef þarf.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="gamerow">⚽ 16:20 — Leikur 3 hefst hjá liði 5</div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">16:20</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Kvöldmatur</div>
+      <div class="who"><span class="chip l4">Lið 4</span></div>
+      <div class="why">Matur kl. 16:30.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">16:30</div>
+    <div class="what">
+      <div class="route">Hásteinsvöllur <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Leik lokið ~16:20 — hvíld fram að kvöldmat kl. 17:30.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip both"><div class="stripe"></div><div class="inner">
+    <div class="when">17:00</div>
+    <div class="what">
+      <div class="route">Kvöldmatur <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l1">Lið 1</span> <span class="chip l2">Lið 2</span> <span class="chip l4">Lið 4</span></div>
+      <div class="why">Tvær ferðir á hvorn bíl.</div>
+    </div><span class="carlabel">Báðir bílar</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">17:10</div>
+    <div class="what">
+      <div class="route">Herjólfshöll <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Leik lokið ~17:00 — stutt hvíld fyrir kvöldmat kl. 18:00.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">17:25</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Kvöldmatur</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Matur kl. 17:30.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">17:55</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Kvöldmatur</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Matur kl. 18:00.</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">18:10</div>
+    <div class="what">
+      <div class="route">Kvöldmatur <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l3">Lið 3</span></div>
+      <div class="why">Síðasta ferð liðs 3.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c2"><div class="stripe"></div><div class="inner">
+    <div class="when">18:40</div>
+    <div class="what">
+      <div class="route">Kvöldmatur <span class="arr">→</span> Gisting</div>
+      <div class="who"><span class="chip l5">Lið 5</span></div>
+      <div class="why">Síðasta ferð dagsins — takk fyrir daginn! 🎉</div>
+    </div><span class="carlabel">Bíll 2</span>
+  </div></div>
+
+  <!-- ════ Yfirlit + athugasemdir ════ -->
+  <details class="overview">
+    <summary>Leikja- og matartöfluyfirlit</summary>
+    <div class="scroll">
+      <table>
+        <thead><tr>
+          <th>Lið</th><th>Leikur 1</th><th>Leikur 2</th><th>Leikur 3</th>
+          <th>Morgunm.</th><th>Hádegism.</th><th>Kvöldm.</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><span class="chip l1">Lið 1</span></td><td class="num">08:20 Hásteinsv. 2</td><td class="num">09:40 Þórsv. 2</td><td class="num">11:00 Týsv. 1</td><td class="num">07:00</td><td class="num">12:30</td><td class="num">16:30</td></tr>
+          <tr><td><span class="chip l2">Lið 2</span></td><td class="num">08:20 Þórsv. 1</td><td class="num">09:40 Hásteinsv. 1</td><td class="num">11:00 Týsv. 3</td><td class="num">07:00</td><td class="num">12:30</td><td class="num">16:30</td></tr>
+          <tr><td><span class="chip l3">Lið 3</span></td><td class="num">13:00 Týsv. 4</td><td class="num">14:20 Þórsv. 3</td><td class="num">15:40 Hásteinsv. 4</td><td class="num">08:00</td><td class="num">11:30</td><td class="num">17:30</td></tr>
+          <tr><td><span class="chip l4">Lið 4</span></td><td class="num">08:20 Týsv. 4</td><td class="num">09:40 Herjólfshöll 1</td><td class="num">11:00 Hásteinsv. 4</td><td class="num">07:00</td><td class="num">12:30</td><td class="num">16:30</td></tr>
+          <tr><td><span class="chip l5">Lið 5</span></td><td class="num">13:40 Týsv. 4</td><td class="num">15:00 Þórsv. 3</td><td class="num">16:20 Herjólfshöll 2</td><td class="num">08:30</td><td class="num">12:00</td><td class="num">18:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <ul class="notes">
+    <li><b>Lið 4 á morgnana</b> fær ~20 mín. á velli fyrir leik 1. Ef það er of naumt: flýta ferðum Bíls 1 um 10 mín. — eða Ágúst tekur eina aukaferð kl. 7:45.</li>
+    <li><b>Gönguferðir:</b> Vellirnir eru í göngufæri. Ef báðir bílar eru uppteknir má lið ganga milli valla með fararstjóra.</li>
+  </ul>
+  <div class="warn">
+    <b>Föstudagur og laugardagur:</b> Leikjaskrár þeirra daga eru ekki enn birtar á urslit.tmmotid.is — plan fyrir þá daga kemur um leið og leikirnir birtast.
+  </div>
+
+  <footer>Bílaplan Þróttar · TM Mótið í Eyjum · Heimild: urslit.tmmotid.is</footer>
+</div>
+
+<script>
+  const body = document.body;
+  const note = document.getElementById('modeNote');
+  const labels = {
+    c1: 'Sýni bara ferðir Bíls 1 (rauðar). Hilmar → Kristján → Bjarki eftir vöktum.',
+    c2: 'Sýni bara ferðir Bíls 2 (bláar). Andri → Sæmi → Sif eftir vöktum.',
+    all: 'Veldu þinn bíl hér að ofan til að sjá bara þínar ferðir.'
+  };
+  document.querySelectorAll('.pbtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pbtn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const m = btn.dataset.mode;
+      body.className = 'show-' + m;
+      note.textContent = labels[m];
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
