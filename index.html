@@ -85,6 +85,7 @@
   .dcard{flex:1;min-width:200px;border-radius:8px;padding:9px 12px;color:#fff;font-size:14px}
   .dcard.c1{background:var(--red)}
   .dcard.c2{background:var(--blue)}
+  .dcard.missing{background:#B45309}
   .dcard b{font-size:15.5px}
   .dcard a{color:#fff;font-weight:700;text-decoration:none;white-space:nowrap}
   .dcard .role{
@@ -213,17 +214,20 @@
 <div class="wrap">
   <p class="mode-note" id="modeNote">Veldu þinn bíl hér að ofan til að sjá bara þínar ferðir.</p>
 
-  <!-- ════════════ MORGUNVAKT ════════════ -->
-  <h2>Morgunvakt</h2>
-  <p class="h2sub">06:40–12:00 · Lið 1, 2 og 4 spila — bílstjórar af liðum 3 og 5 keyra á meðan · bátsferð liða 3 og 5 kl. 10:40</p>
-  <div class="driverbar">
-    <div class="dcard c1"><span class="role">Bíll 1</span><b>Kristján</b> (lið 3) · <a href="tel:6980088">698 0088</a></div>
-    <div class="dcard c2"><span class="role">Bíll 2</span><b>Bjarki</b> (lið 5) · <a href="tel:6975490">697 5490</a></div>
+  <div class="warn">
+    <b>Vantar bílstjóra á Bíl 1 kl. 8:15–13:00!</b> Sú vakt er stærsta vakt dagsins (10 ferðir). Þar sem lið 1, 2 og 4 eru að spila á þeim tíma þarf foreldri af <b>liði 3 eða 5</b> (t.d. Kristján, Leví, Bjarki eða Arna) — skráið ykkur í „Bílstjóravaktir og nestisnefnd“.
   </div>
-  <p class="vara">Til vara: Valtýr (lið 5) · <a href="tel:6255195">625 5195</a></p>
+
+  <!-- ════════════ VAKT 1 · 07:00–08:15 ════════════ -->
+  <h2>Vakt 1 · Morgunvakt</h2>
+  <p class="h2sub">07:00–08:15 · Lið 1, 2 og 4 í morgunmat og á fyrsta leik — Andri og Egill ná leikjum sinna liða kl. 8:20</p>
+  <div class="driverbar">
+    <div class="dcard c1"><span class="role">Bíll 1</span><b>Andri</b> (lið 2) · <a href="tel:6661313">666 1313</a></div>
+    <div class="dcard c2"><span class="role">Bíll 2</span><b>Egill</b> (lið 4) · <a href="tel:8490691">849 0691</a></div>
+  </div>
 
   <div class="trip c1"><div class="stripe"></div><div class="inner">
-    <div class="when">06:45</div>
+    <div class="when">07:00</div>
     <div class="what">
       <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
       <div class="who"><span class="chip l1">Lið 1</span></div>
@@ -232,7 +236,7 @@
   </div></div>
 
   <div class="trip c2"><div class="stripe"></div><div class="inner">
-    <div class="when">06:45</div>
+    <div class="when">07:00</div>
     <div class="what">
       <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
       <div class="who"><span class="chip l2">Lið 2</span></div>
@@ -241,11 +245,11 @@
   </div></div>
 
   <div class="trip c1"><div class="stripe"></div><div class="inner">
-    <div class="when">06:55</div>
+    <div class="when">07:12</div>
     <div class="what">
       <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
       <div class="who"><span class="chip l4">Lið 4</span></div>
-      <div class="why">Ferð nr. 2 — beint eftir lið 1.</div>
+      <div class="why">Ferð nr. 2 — beint eftir lið 1. Liðið borðar til ~7:55, ekki tefja.</div>
     </div><span class="carlabel">Bíll 1</span>
   </div></div>
 
@@ -272,7 +276,7 @@
     <div class="what">
       <div class="route">Morgunmatur <span class="arr">→</span> Týsvöllur 4</div>
       <div class="who"><span class="chip l4">Lið 4</span></div>
-      <div class="why">Leikur kl. 8:20 — naumasti tíminn í planinu, ekki tefja.</div>
+      <div class="why">Leikur kl. 8:20 — naumasti tíminn í planinu, ekki tefja. Síðasta ferð Andra: hann nær leik liðs 2 kl. 8:20.</div>
     </div><span class="carlabel">Bíll 1</span>
   </div></div>
 
@@ -281,9 +285,17 @@
     <div class="what">
       <div class="route">Gisting <span class="arr">→</span> Morgunmatur</div>
       <div class="who"><span class="chip l3">Lið 3</span></div>
-      <div class="why">Matur kl. 8:00.</div>
+      <div class="why">Matur kl. 8:00. Síðasta ferð Egils: hann nær leik liðs 4 kl. 8:20.</div>
     </div><span class="carlabel">Bíll 2</span>
   </div></div>
+
+  <!-- ════════════ VAKT 2 · 08:15–13:00 ════════════ -->
+  <h2>Vakt 2 · Dagvakt</h2>
+  <p class="h2sub">08:15–13:00 · Allir leikir liða 1, 2 og 4 — bátsferð liða 3 og 5 kl. 10:40</p>
+  <div class="driverbar">
+    <div class="dcard missing"><span class="role">Bíll 1</span><b>VANTAR BÍLSTJÓRA</b> — foreldri af liði 3 eða 5</div>
+    <div class="dcard c2"><span class="role">Bíll 2</span><b>Valtýr</b> (lið 5) · <a href="tel:6255195">625 5195</a></div>
+  </div>
 
   <div class="gamerow">⚽ 08:20 — Leikur 1 hefst hjá liðum 1, 2 og 4</div>
 
@@ -414,7 +426,7 @@
     <div class="what">
       <div class="route">Týsvöllur <span class="arr">→</span> Hádegismatur</div>
       <div class="who"><span class="chip l1">Lið 1</span> <span class="chip l2">Lið 2</span></div>
-      <div class="why">Bæði lið á Týsvelli — matur kl. 12:30, tvær ferðir ef þarf.</div>
+      <div class="why">Bæði lið á Týsvelli — matur kl. 12:30, Bíll 2 hjálpar ef þarf.</div>
     </div><span class="carlabel">Bíll 1</span>
   </div></div>
 
@@ -427,21 +439,12 @@
     </div><span class="carlabel">Bíll 2</span>
   </div></div>
 
-  <!-- ════════════ MIÐVAKT ════════════ -->
-  <h2>Miðvakt</h2>
-  <p class="h2sub">11:45–15:30 · Lið 3 og 5 byrja að spila — bílstjórar af liðum 1 og 2 keyra (þeirra leikjum lokið kl. 11:40)</p>
-  <div class="driverbar">
-    <div class="dcard c1"><span class="role">Bíll 1</span><b>Hilmar</b> (lið 1) · <a href="tel:8989249">898 9249</a></div>
-    <div class="dcard c2"><span class="role">Bíll 2</span><b>Andri</b> (lið 2) · <a href="tel:6661313">666 1313</a></div>
-  </div>
-  <p class="vara">Til vara: Ágúst (lið 1+2) · <a href="tel:6967931">696 7931</a></p>
-
   <div class="trip c1"><div class="stripe"></div><div class="inner">
     <div class="when">11:50</div>
     <div class="what">
       <div class="route">Gisting <span class="arr">→</span> Hádegismatur</div>
       <div class="who"><span class="chip l5">Lið 5</span></div>
-      <div class="why">Matur kl. 12:00.</div>
+      <div class="why">Matur kl. 12:00 — beint eftir Týsvallarferðina.</div>
     </div><span class="carlabel">Bíll 1</span>
   </div></div>
 
@@ -450,9 +453,17 @@
     <div class="what">
       <div class="route">Hádegismatur <span class="arr">→</span> Týsvöllur 4</div>
       <div class="who"><span class="chip l3">Lið 3</span></div>
-      <div class="why">Fyrsti leikur liðs 3 kl. 13:00.</div>
+      <div class="why">Fyrsti leikur liðs 3 kl. 13:00 — síðasta ferð vaktarinnar.</div>
     </div><span class="carlabel">Bíll 1</span>
   </div></div>
+
+  <!-- ════════════ VAKT 3 · 13:00–18:00 ════════════ -->
+  <h2>Vakt 3 · Síðdegisvakt</h2>
+  <p class="h2sub">13:00–18:00 · Allir leikir liða 3 og 5 — bátsferð liða 1, 2 og 4 kl. 15:20 · kvöldmatur</p>
+  <div class="driverbar">
+    <div class="dcard c1"><span class="role">Bíll 1</span><b>Hilmar</b> (lið 1) · <a href="tel:8989249">898 9249</a></div>
+    <div class="dcard c2"><span class="role">Bíll 2</span><b>Valur</b> (lið 1) · <a href="tel:6634411">663 4411</a></div>
+  </div>
 
   <div class="gamerow">⚽ 13:00 — Leikur 1 hefst hjá liði 3</div>
 
@@ -461,7 +472,7 @@
     <div class="what">
       <div class="route">Hádegismatur <span class="arr">→</span> Týsvöllur 4</div>
       <div class="who"><span class="chip l5">Lið 5</span></div>
-      <div class="why">Fyrsti leikur liðs 5 kl. 13:40.</div>
+      <div class="why">Fyrsti leikur liðs 5 kl. 13:40 — Valtýr nær leiknum eftir vaktaskil.</div>
     </div><span class="carlabel">Bíll 2</span>
   </div></div>
 
@@ -501,7 +512,7 @@
     <div class="what">
       <div class="route">Gisting <span class="arr">→</span> RibSafari bryggja</div>
       <div class="who"><span class="chip l1">Lið 1</span></div>
-      <div class="why">Tangagata 7 — mæting 15:05, bátur kl. 15:20. Sæktu svo lið 4.</div>
+      <div class="why">Tangagata 7 — mæting 15:05, bátur kl. 15:20. Hilmar keyrir eigið lið á bryggjuna — sæktu svo lið 4.</div>
     </div><span class="carlabel">Bíll 1</span>
   </div></div>
 
@@ -535,16 +546,6 @@
   </div></div>
 
   <div class="boatrow">🚤 15:20 — Bátsferð liða 1, 2 og 4 (30 mín · RibSafari)</div>
-
-  <!-- ════════════ KVÖLDVAKT ════════════ -->
-  <h2>Kvöldvakt</h2>
-  <p class="h2sub">15:15–18:45 · Síðustu leikir liða 3 og 5 — bílstjórar af liðum 1 og 4 keyra · kvöldmatur fyrir alla</p>
-  <div class="driverbar">
-    <div class="dcard c1"><span class="role">Bíll 1</span><b>Valur</b> (lið 1) · <a href="tel:6634411">663 4411</a></div>
-    <div class="dcard c2"><span class="role">Bíll 2</span><b>Egill</b> (lið 4) · <a href="tel:8490691">849 0691</a></div>
-  </div>
-  <p class="vara">Til vara: Jón Levy (lið 2) · <a href="tel:7798217">779 8217</a></p>
-
   <div class="gamerow">⚽ 15:40 — Leikur 3 hefst hjá liði 3</div>
 
   <div class="trip c1"><div class="stripe"></div><div class="inner">
@@ -626,26 +627,43 @@
     <div class="what">
       <div class="route">Gisting <span class="arr">→</span> Kvöldmatur</div>
       <div class="who"><span class="chip l5">Lið 5</span></div>
-      <div class="why">Matur kl. 18:00.</div>
+      <div class="why">Matur kl. 18:00 — síðasta ferð vaktarinnar.</div>
     </div><span class="carlabel">Bíll 2</span>
   </div></div>
+
+  <!-- ════════════ VAKT 4 · 18:00–21:00 ════════════ -->
+  <h2>Vakt 4 · Kvöldvakt</h2>
+  <p class="h2sub">18:00–21:00 · Síðustu matarferðir + setning og hæfileikakeppni kl. 19:00 — Einar Örn tekur báða bíla (fáar ferðir)</p>
+  <div class="driverbar">
+    <div class="dcard c1"><span class="role">Bíll 1</span><b>Einar Örn</b> (lið 3) · <a href="tel:8969577">896 9577</a></div>
+    <div class="dcard missing"><span class="role">Bíll 2</span><b>Ómannaður</b> — Einar Örn tekur ferðirnar á Bíl 1</div>
+  </div>
 
   <div class="trip c1"><div class="stripe"></div><div class="inner">
     <div class="when">18:10</div>
     <div class="what">
       <div class="route">Kvöldmatur <span class="arr">→</span> Gisting</div>
       <div class="who"><span class="chip l3">Lið 3</span></div>
-      <div class="why">Síðasta ferð liðs 3.</div>
+      <div class="why">Síðasta matarferð liðs 3.</div>
     </div><span class="carlabel">Bíll 1</span>
   </div></div>
 
-  <div class="trip c2"><div class="stripe"></div><div class="inner">
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
     <div class="when">18:40</div>
     <div class="what">
       <div class="route">Kvöldmatur <span class="arr">→</span> Gisting</div>
       <div class="who"><span class="chip l5">Lið 5</span></div>
-      <div class="why">Síðasta ferð dagsins — takk fyrir daginn! 🎉</div>
-    </div><span class="carlabel">Bíll 2</span>
+      <div class="why">Bíll 2 ómannaður á kvöldvakt — Einar Örn tekur þessa ferð líka.</div>
+    </div><span class="carlabel">Bíll 1</span>
+  </div></div>
+
+  <div class="trip c1"><div class="stripe"></div><div class="inner">
+    <div class="when">18:45</div>
+    <div class="what">
+      <div class="route">Gisting <span class="arr">→</span> Setning (eftir þörfum)</div>
+      <div class="who"><span class="chip l1">Lið 1</span> <span class="chip l2">Lið 2</span> <span class="chip l3">Lið 3</span> <span class="chip l4">Lið 4</span> <span class="chip l5">Lið 5</span></div>
+      <div class="why">Setning og hæfileikakeppni kl. 19:00 — liðin geta líka gengið með fararstjórum. Einar Örn skutlar þeim sem þurfa og sækir eftir samlokur kl. 20:00.</div>
+    </div><span class="carlabel">Bíll 1</span>
   </div></div>
 
   <!-- ════ Yfirlit + athugasemdir ════ -->
@@ -669,26 +687,27 @@
   </details>
 
   <ul class="notes">
-    <li><b>Vaktaregla:</b> Bílstjórar keyra þegar þeirra eigið lið er <i>ekki</i> að spila — þannig missir enginn af leikjum dótturinnar. Morgunvakt: foreldrar liða 3/5 · miðvakt og kvöldvakt: foreldrar liða 1, 2 og 4.</li>
+    <li><b>Vaktirnar fylgja skráningu foreldra</b> í „Bílstjóravaktir og nestisnefnd“-skjalinu. Allar skráðu vaktirnar standast regluna: enginn keyrir á meðan eigið lið spilar — Andri (lið 2) og Egill (lið 4) klára kl. 8:15 og ná leikjunum kl. 8:20, Valtýr (lið 5) klárar kl. 13:00 fyrir leik liðs 5 kl. 13:40, Hilmar og Valur (lið 1) byrja eftir að lið 1 klárar kl. ~11:40, og Einar Örn (lið 3) byrjar eftir að lið 3 klárar kl. ~16:20.</li>
+    <li><b>Bátsferðir og vaktir skarast:</b> Valtýr er á vakt í bátsferð liðs 5 (10:40) og Hilmar og Valur eru báðir á vakt í bátsferð liðs 1 (15:20). Það er í lagi — aðeins einn fararstjóri fer með hverju liði í bátinn — en gott að foreldrarnir viti það fyrirfram.</li>
     <li><b>Bátsferðir (RibSafari, Tangagötu 7):</b> Mæting 15 mín. fyrir brottför, ferðin tekur 30 mín., einn fararstjóri fer með hverju liði. Sími RibSafari: <a href="tel:6611810">661 1810</a>.</li>
-    <li><b>Lið 4 á morgnana</b> fær ~20 mín. á velli fyrir leik 1. Ef það er of naumt: flýta ferðum Bíls 1 um 10 mín. — eða varamaður tekur eina aukaferð kl. 7:45.</li>
+    <li><b>Lið 4 á morgnana</b> er sótt kl. 7:12 og fær ~20 mín. á velli fyrir leik 1. Ef það er of naumt: Andri byrjar 10–15 mín. fyrr (fyrir kl. 7:00) — það er eina leiðin til að rýmka morguninn innan skráðu vaktanna.</li>
     <li><b>Gönguferðir:</b> Vellirnir eru í göngufæri. Ef báðir bílar eru uppteknir má lið ganga milli valla með fararstjóra.</li>
-    <li><b>Setning og hæfileikakeppni kl. 19:00:</b> Öll liðin mæta — eftir síðustu matarferðir (18:40) ganga liðin saman á setninguna með fararstjórum, eða kvöldvaktarbílstjórar taka aukaferðir 18:40–19:00 og sækja aftur eftir samlokur kl. 20:00.</li>
+    <li><b>Setning og hæfileikakeppni kl. 19:00:</b> Öll liðin mæta — Einar Örn er á vakt til 21:00 og dekkar bæði skutl á setninguna og að sækja eftir samlokur kl. 20:00.</li>
     <li><b>Athugið:</b> Í DAGSKRÁ-sheetinu stendur „kl. 11.40" við leik liðs 2 gegn RKVN — opinbera leikjaskráin (urslit.tmmotid.is) segir <b>kl. 11:00 á Týsvelli 3</b> og planið miðar við það.</li>
   </ul>
   <div class="warn">
     <b>Föstudagur og laugardagur:</b> Leikjaskrár þeirra daga eru ekki enn birtar á urslit.tmmotid.is — plan fyrir þá daga kemur um leið og leikirnir birtast. Á föstudag eru engar bátsferðir hjá Þrótti (allar á fimmtudag skv. RibSafari-planinu).
   </div>
 
-  <footer>Bílaplan Þróttar · TM Mótið í Eyjum · Heimildir: urslit.tmmotid.is + RibSafari bátsferðaplan 2026</footer>
+  <footer>Bílaplan Þróttar · TM Mótið í Eyjum · Heimildir: urslit.tmmotid.is + RibSafari bátsferðaplan 2026 + Bílstjóravaktir-skráning foreldra</footer>
 </div>
 
 <script>
   const body = document.body;
   const note = document.getElementById('modeNote');
   const labels = {
-    c1: 'Sýni bara ferðir Bíls 1 (rauðar). Kristján → Hilmar → Valur eftir vöktum.',
-    c2: 'Sýni bara ferðir Bíls 2 (bláar). Bjarki → Andri → Egill eftir vöktum.',
+    c1: 'Sýni bara ferðir Bíls 1 (rauðar). Andri → (vantar) → Hilmar → Einar Örn eftir vöktum.',
+    c2: 'Sýni bara ferðir Bíls 2 (bláar). Egill → Valtýr → Valur eftir vöktum.',
     all: 'Veldu þinn bíl hér að ofan til að sjá bara þínar ferðir.'
   };
   document.querySelectorAll('.pbtn').forEach(btn => {
