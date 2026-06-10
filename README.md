@@ -16,6 +16,7 @@ Output language: **Icelandic**. All times 24h format (`HH:MM`).
 
 ### 2.1 Match schedule (primary, fetch live)
 
+- **Scraper:** `scrape.py` in this repo implements this section (stdlib-only Python 3). `python3 scrape.py --probe` discovers populated day codes; `python3 scrape.py --day B --json` emits the parsed Þróttur matches.
 - Results site: `https://urslit.tmmotid.is/index?day=<DAY>`
   - `day=A` = fimmtudagur (Thursday). Confirmed populated.
   - Friday and Saturday day-codes are **unverified** — `day=B` … `day=E` returned empty pages (~4.9 KB) as of 2026-06-10. When the schedule is published, probe `day=B`, `day=C`, etc., and also re-check the parent pages `https://tmmotid.is/page/urslit-fimmtudagur` and `https://tmmotid.is/page/urslit-og-ridlar` for new iframe URLs (`<iframe src="https://urslit.tmmotid.is/...">`).
