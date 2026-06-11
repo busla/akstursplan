@@ -8,7 +8,7 @@ This README is written as an executable spec: an AI agent with web access should
 
 ## 1. Goal
 
-For a given tournament day, produce a self-contained HTML page (same structure as `index.html` / the Thursday plan) that tells each of two drivers exactly which trips to drive, when, with which team, from where to where.
+For a given tournament day, produce a self-contained HTML page (same structure as `fimmtudagur.html` / the Thursday plan) that tells each of two drivers exactly which trips to drive, when, with which team, from where to where. `index.html` is just a redirect to the current day's plan — repoint it when a new day goes live.
 
 Output language: **Icelandic**. All times 24h format (`HH:MM`).
 
@@ -122,7 +122,7 @@ Note: **Ágúst is registered with both lið 1 and lið 2** — ideal reserve wh
 
 ## 5. Output format
 
-Produce a single self-contained HTML file modeled on the Thursday file (`index.html` in this repo):
+Produce a single self-contained HTML file modeled on the Thursday file (`fimmtudagur.html` in this repo):
 
 - Sticky car picker: **Bíll 1 (red `#C8102E`) / Bíll 2 (blue `#1D4E89`) / Allt** — JS class-toggle filtering (`body.show-c1` hides `.trip.c2`, etc.).
 - One `.trip` card per trip: big time, `Hvaðan → Hvert`, team chips (lið colors: 1 `#F6C9CF`, 2 `#D96A5B`, 3 `#E89AA4`, 4 `#C8102E`, 5 `#F2B8C0`), one-line “why” note, car label.
