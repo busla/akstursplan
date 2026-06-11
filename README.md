@@ -19,7 +19,8 @@ Output language: **Icelandic**. All times 24h format (`HH:MM`).
 - **Scraper:** `scrape.py` in this repo implements this section (stdlib-only Python 3). `python3 scrape.py --probe` discovers populated day codes; `python3 scrape.py --day B --json` emits the parsed Þróttur matches.
 - Results site: `https://urslit.tmmotid.is/index?day=<DAY>`
   - `day=A` = fimmtudagur (Thursday). Confirmed populated.
-  - Friday and Saturday day-codes are **unverified** — `day=B` … `day=E` returned empty pages (~4.9 KB) as of 2026-06-10. When the schedule is published, probe `day=B`, `day=C`, etc., and also re-check the parent pages `https://tmmotid.is/page/urslit-fimmtudagur` and `https://tmmotid.is/page/urslit-og-ridlar` for new iframe URLs (`<iframe src="https://urslit.tmmotid.is/...">`).
+  - `day=B` = föstudagur (Friday). Confirmed 2026-06-11 via the iframe on `https://tmmotid.is/page/urslit-fostudagur`.
+  - The Saturday day-code is **unverified** — `day=C` … `day=H` were still empty as of 2026-06-11. When the schedule is published, probe with `python3 scrape.py --probe` and re-check the parent pages (e.g. `https://tmmotid.is/page/urslit-og-ridlar`) for new iframe URLs (`<iframe src="https://urslit.tmmotid.is/...">`).
   - A populated day page is ≫ 10 KB and contains an HTML `<table>`.
 - Table row format (after HTML-entity unescaping), `<td>` cells in order:
   `Riðill | Tími | Völlur | Lið 1 | Lið 2 | Úrslit Lið-1 | Úrslit Lið-2`
@@ -87,7 +88,9 @@ Note: **Ágúst is registered with both lið 1 and lið 2** — ideal reserve wh
 
 **CRITICAL assignment rule (learned from parent feedback):** A driver must NEVER be on shift while their own team is playing — drivers shuttle the *other* teams and would miss their daughter’s matches. Assign drivers to shifts where their team is idle: e.g. if lið 1, 2, 4 play in the morning block, the morning shift is staffed by lið 3/5 parents, and vice versa. Boat trips and meals are acceptable overlaps (only 1 fararstjóri accompanies the boat), but flag them.
 
-**Rotation rule:** No one drives two days in a row unless unavoidable. Thursday’s final drivers were Kristján (3), Bjarki (5), Hilmar (1), Andri (2), Valur (1), Egill (4) — so Friday priority goes to **Sæmi (4), Sif (4), Leví (3), Einar Örn (3), Valtýr (5), Arna (5), Jón Levy (2), Ágúst (1+2)**, still subject to the critical rule above.
+**Rotation rule:** No one drives two days in a row unless unavoidable. Thursday’s final drivers (per `index.html`) were Andri (2), Egill (4), Kristján (3), Valtýr (5), Hilmar (1), Valur (1), Einar Örn (3). Friday’s drivers (per `fostudagur.html`) are Leví (3), Andri (2, self-signed two days in a row), Bjarki (5), Arna (5), Svavar (signed up but not in the roster — identity/phone unconfirmed), Sæmi (4), Jón Levy (2) — so Saturday priority goes to **Hilmar (1), Valur (1), Egill (4), Kristján (3), Valtýr (5), Einar Örn (3), Ágúst (1+2), Sif (4)**, still subject to the critical rule above.
+
+**Friday learning (carry into Saturday):** the venues are all in the same area — teams **walk between venues**, drivers only run gisting ↔ matsalur ↔ venue-area trips. Skip step 4’s venue → venue trips entirely. Also cross-check the per-team meal times against the parents’ live `DAGSKRÁ` sheet (same spreadsheet as the rosters): the fararstjórar move teams between sittings (e.g. Friday: lið 4 swim trip with 12:00 lunch / 18:00 dinner) and the official kickoff→sitting table is only the fallback.
 
 ## 4. Scheduling algorithm
 
