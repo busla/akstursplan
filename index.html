@@ -2,11 +2,18 @@
 <html lang="is">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=fostudagur.html">
 <title>Bílaplan Þróttar · TM Mótið</title>
-<link rel="canonical" href="fostudagur.html">
+<script>
+  // Ísland er á UTC — frá og með 13. júní opnast laugardagsplanið sjálfkrafa.
+  var today = new Date().toISOString().slice(0, 10);
+  location.replace(today >= '2026-06-13' ? 'laugardagur.html' : 'fostudagur.html');
+</script>
 </head>
 <body>
-<p>Áfram á <a href="fostudagur.html">bílaplan föstudagsins</a> …</p>
+<p>Bílaplan Þróttar:
+  <a href="fimmtudagur.html">Fimmtudagur</a> ·
+  <a href="fostudagur.html">Föstudagur</a> ·
+  <a href="laugardagur.html">Laugardagur</a>
+</p>
 </body>
 </html>

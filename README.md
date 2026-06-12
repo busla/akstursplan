@@ -20,7 +20,7 @@ Output language: **Icelandic**. All times 24h format (`HH:MM`).
 - Results site: `https://urslit.tmmotid.is/index?day=<DAY>`
   - `day=A` = fimmtudagur (Thursday). Confirmed populated.
   - `day=B` = föstudagur (Friday). Confirmed 2026-06-11 via the iframe on `https://tmmotid.is/page/urslit-fostudagur`.
-  - The Saturday day-code is **unverified** — `day=C` … `day=H` were still empty as of 2026-06-11. When the schedule is published, probe with `python3 scrape.py --probe` and re-check the parent pages (e.g. `https://tmmotid.is/page/urslit-og-ridlar`) for new iframe URLs (`<iframe src="https://urslit.tmmotid.is/...">`).
+  - `day=C` = laugardagur (Saturday). Confirmed populated 2026-06-12 (“C - Laugardagur” in the day picker).
   - A populated day page is ≫ 10 KB and contains an HTML `<table>`.
 - Table row format (after HTML-entity unescaping), `<td>` cells in order:
   `Riðill | Tími | Völlur | Lið 1 | Lið 2 | Úrslit Lið-1 | Úrslit Lið-2`
@@ -89,6 +89,8 @@ Note: **Ágúst is registered with both lið 1 and lið 2** — ideal reserve wh
 **CRITICAL assignment rule (learned from parent feedback):** A driver must NEVER be on shift while their own team is playing — drivers shuttle the *other* teams and would miss their daughter’s matches. Assign drivers to shifts where their team is idle: e.g. if lið 1, 2, 4 play in the morning block, the morning shift is staffed by lið 3/5 parents, and vice versa. Boat trips and meals are acceptable overlaps (only 1 fararstjóri accompanies the boat), but flag them.
 
 **Rotation rule:** No one drives two days in a row unless unavoidable. Thursday’s final drivers (per `index.html`) were Andri (2), Egill (4), Kristján (3), Valtýr (5), Hilmar (1), Valur (1), Einar Örn (3). Friday’s drivers (per `fostudagur.html`) are Leví (3), Andri (2, self-signed two days in a row), Einar Örn (3, second day in a row — unavoidable, the day shift needs a lið 3/5 parent and none were fresh), Bjarki (5), Svavar (2 — not in the roster; phone 820 9091), Sæmi (4), Jón Levy (2), Ágúst (1+2) — so Saturday priority goes to **Hilmar (1), Valur (1), Egill (4), Kristján (3), Valtýr (5), Sif (4), Arna (5)**, still subject to the critical rule above. Einar Örn has now driven two days running — keep him off Saturday.
+
+Saturday’s final drivers (per `laugardagur.html`, all last drove Thursday or not at all): Sif (4), Arna (5), Valtýr (5), Egill (4), Hilmar (1), Kristján (3) — short shifts cut around each team’s kickoffs so every driver sees all of their own team’s matches.
 
 **Signup rule (learned from parent feedback):** a parent who signed up for a specific slot in the “Bilstjóra plan” sheet gets **exactly that slot** — never extend, move or drop their shift without asking them first. Fill remaining gaps around the signups.
 
