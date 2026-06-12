@@ -90,7 +90,7 @@ Note: **Ágúst is registered with both lið 1 and lið 2** — ideal reserve wh
 
 **Rotation rule:** No one drives two days in a row unless unavoidable. Thursday’s final drivers (per `index.html`) were Andri (2), Egill (4), Kristján (3), Valtýr (5), Hilmar (1), Valur (1), Einar Örn (3). Friday’s drivers (per `fostudagur.html`) are Leví (3), Andri (2, self-signed two days in a row), Einar Örn (3, second day in a row — unavoidable, the day shift needs a lið 3/5 parent and none were fresh), Bjarki (5), Svavar (2 — not in the roster; phone 820 9091), Sæmi (4), Jón Levy (2), Ágúst (1+2) — so Saturday priority goes to **Hilmar (1), Valur (1), Egill (4), Kristján (3), Valtýr (5), Sif (4), Arna (5)**, still subject to the critical rule above. Einar Örn has now driven two days running — keep him off Saturday.
 
-Saturday’s final drivers (per `laugardagur.html`, all last drove Thursday or not at all): Sif (4), Arna (5), Valtýr (5), Egill (4), Hilmar (1), Kristján (3) — short shifts cut around each team’s kickoffs so every driver sees all of their own team’s matches.
+Saturday’s final drivers (per `laugardagur.html`): Egill (4, 6:45–8:15) and Bjarki (5, 6:45–9:15, second day in a row per organiser request) cover the whole morning alone; then Hilmar (1) + Sif (4), Kristján (3) + Arna (5), and Valtýr (5) for the last pickup — short shifts cut around each team’s kickoffs so every driver sees all of their own team’s matches.
 
 **Signup rule (learned from parent feedback):** a parent who signed up for a specific slot in the “Bilstjóra plan” sheet gets **exactly that slot** — never extend, move or drop their shift without asking them first. Fill remaining gaps around the signups.
 
